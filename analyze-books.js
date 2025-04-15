@@ -7,24 +7,17 @@ const books = [
 ];
 
 function analyzBooks(books) {
-    const filtered = books.filter(function(book) {
-        if (book.pages < 300) {
-            return book;
-        }
-    })
+    const filtered = books.filter(book => book.pages > 300);
     console.log(filtered);
     
     const bookTitle = filtered.map(book => book.title);
     console.log(bookTitle);
     
-    // To fix
-    const javaBook = books.some(title => title == 'JavaScript');
+    const javaBook = bookTitle.some(title => title.toLowerCase().includes('javascript'));
     console.log(javaBook);
     
-    // To fix
-    const work = books.find(word => word === 'work');
+    const work = bookTitle.find(word => word.toLowerCase().includes('work'));
     console.log(work);
 }
 
-console.log(analyzBooks(books))
-// console.log(books[0].pages)
+analyzBooks(books);
